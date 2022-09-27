@@ -12,10 +12,10 @@ export const useFilmsStore = defineStore('films', {
 		filmList: []
 	}),
 	actions: {
-		async submitFilms(payload) {
+		async submitFilms(payload, uId) {
 			console.log('payload at action', payload);
 			const db = getDatabase();
-			await push(ref(db), {
+			await set(ref(db, '/films/', uId), {
 				filmList: payload
 			});
 		}
