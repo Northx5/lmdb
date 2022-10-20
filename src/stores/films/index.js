@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import { getDatabase, ref, set, push } from 'firebase/database';
+import { getDatabase, ref, push, child, get } from 'firebase/database';
 
 export const useFilmsStore = defineStore('films', {
 	state: () => ({
@@ -9,14 +9,24 @@ export const useFilmsStore = defineStore('films', {
 			filmName: '',
 			filmYear: '',
 		},
-		filmList: []
+		filmsInDb: [],
 	}),
 	actions: {
 		async submitFilms(payload, uId) {
-			console.log('payload at action', payload);
 			const db = getDatabase();
-			await set(ref(db, '/films/', uId), {
-				filmList: payload
+			await push(ref(db, `uId:${uId}/filmList`), {
+				...payload
+			});
+		},
+		async getFilms(uId) {
+			const dbRef = ref(getDatabase());
+			await get(child(dbRef, `uId:${uId}/filmList`)).then((snapshot) => {
+				if (snapshot.exists()) {
+					const data = Object.values(snapshot.val());
+					this.filmsInDb = [].concat(...data);
+				} else {
+					console.log('no data');
+				}
 			});
 		}
 	}

@@ -34,10 +34,24 @@
 		</tr>
 	</table>
 	<button @click="submit" style="margin-top: 40px">Submit Films</button>
+	<button @click="getFilmsForUser" style="margin-top: 40px">Get Films</button>
+
+	<table class="list" style="margin-top:2rem">
+		<th>Film Name</th>
+		<th>Year Seen</th>
+		<th>Laura's Rating</th>
+		<th>Nevzat's Rating</th>
+		<tr v-for="(film, index) in filmsInDb" :key="index">
+			<td>{{ film.filmName }}</td>
+			<td>{{ film.yearSeen }}</td>
+			<td>{{ film.lRating }}</td>
+			<td>{{ film.nRating }}</td>
+		</tr>
+	</table>
 </div>
 </template>
 <script>
-import { mapActions } from 'pinia';
+import { mapActions, mapState } from 'pinia';
 import { useFilmsStore } from '@/stores/films';
 import RadioGroupField from '@/components/FormComponents/RadioGroupField/RadioGroupField.vue';
 export default {
@@ -53,8 +67,11 @@ export default {
 			yearSeen: null
 		},
 		filmList: [],
-		userId: 1
+		userId: 578
 	}),
+	computed: {
+		...mapState(useFilmsStore, ['filmsInDb'])
+	},
 	methods: {
 		addFilm () {
 			this.filmList.push({
@@ -64,19 +81,24 @@ export default {
 				lRating: this.formData.lRating,
 				nRating: this.formData.nRating
 			});
-			/* console.log('this.formData', this.filmList); */
 		},
 		removeItem (index) {
 			this.filmList.splice(index, 1);
 		},
 		submit () {
 			const payload = this.filmList;
+			console.log(payload);
 			
 			this.submitFilms(payload, this.userId).then(() => {
 				console.log('submitted');
 			});
 		},
-		...mapActions(useFilmsStore, ['submitFilms'])
+		getFilmsForUser() {
+			this.getFilms(this.userId).then(()=> {
+				console.log('in getFilmsForUser');
+			});
+		},
+		...mapActions(useFilmsStore, ['submitFilms', 'getFilms'])
 	}
 };
 </script>
