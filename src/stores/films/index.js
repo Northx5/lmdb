@@ -24,6 +24,7 @@ export const useFilmsStore = defineStore('films', {
 				if (snapshot.exists()) {
 					const data = Object.values(snapshot.val());
 					this.filmsInDb = [].concat(...data);
+					console.log(this.filmsInDb);
 				} else {
 					console.log('no data');
 				}

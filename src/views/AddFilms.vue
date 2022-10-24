@@ -21,10 +21,12 @@
 	</div>
 
 	<table class="list">
-		<th>Film Name</th>
-		<th>Year Seen</th>
-		<th>Laura's Rating</th>
-		<th>Nevzat's Rating</th>
+		<tr>
+			<th>Film Name</th>
+			<th>Year Seen</th>
+			<th>Laura's Rating</th>
+			<th>Nevzat's Rating</th>
+		</tr>
 		<tr v-for="(film, index) in filmList" :key="index">
 			<td>{{ film.filmName }}</td>
 			<td>{{ film.yearSeen }}</td>
@@ -34,20 +36,9 @@
 		</tr>
 	</table>
 	<button @click="submit" style="margin-top: 40px">Submit Films</button>
-	<button @click="getFilmsForUser" style="margin-top: 40px">Get Films</button>
 
-	<table class="list" style="margin-top:2rem">
-		<th>Film Name</th>
-		<th>Year Seen</th>
-		<th>Laura's Rating</th>
-		<th>Nevzat's Rating</th>
-		<tr v-for="(film, index) in filmsInDb" :key="index">
-			<td>{{ film.filmName }}</td>
-			<td>{{ film.yearSeen }}</td>
-			<td>{{ film.lRating }}</td>
-			<td>{{ film.nRating }}</td>
-		</tr>
-	</table>
+	<router-link :to="{ name: 'FilmsList' }">Films List</router-link>
+	
 </div>
 </template>
 <script>
@@ -55,20 +46,23 @@ import { mapActions, mapState } from 'pinia';
 import { useFilmsStore } from '@/stores/films';
 import RadioGroupField from '@/components/FormComponents/RadioGroupField/RadioGroupField.vue';
 export default {
+	name: 'AddFilms',
 	components: {
 		RadioGroupField
 	},
-	data: () => ({
-		formData: {
-			filmId: null,
-			filmName: '',
-			nRating: 0,
-			lRating: 0,
-			yearSeen: null
-		},
-		filmList: [],
-		userId: 578
-	}),
+	data () {
+		return {
+			formData: {
+				filmId: null,
+				filmName: '',
+				nRating: 0,
+				lRating: 0,
+				yearSeen: null
+			},
+			filmList: [],
+			userId: 578
+		};		
+	},
 	computed: {
 		...mapState(useFilmsStore, ['filmsInDb'])
 	},
@@ -91,11 +85,6 @@ export default {
 			
 			this.submitFilms(payload, this.userId).then(() => {
 				console.log('submitted');
-			});
-		},
-		getFilmsForUser() {
-			this.getFilms(this.userId).then(()=> {
-				console.log('in getFilmsForUser');
 			});
 		},
 		...mapActions(useFilmsStore, ['submitFilms', 'getFilms'])

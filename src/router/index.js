@@ -6,17 +6,25 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      redirect: '/films'
+      redirect: '/add-films'
     },
     {
-      path: '/films',
-      name: 'films',
+      path: '/add-films',
+      name: 'AddFilms',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AddFilm.vue')
-    }
+      component: () => import('../views/AddFilms.vue')
+    },
+    {
+      path: '/films-list',
+      name: 'FilmsList',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/FilmsList.vue')
+    },
   ]
-})
+});
 
-export default router
+export default router;
