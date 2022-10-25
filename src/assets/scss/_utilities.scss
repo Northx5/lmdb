@@ -1,0 +1,129 @@
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+.f-column {
+  flex-direction: column;
+}
+
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.wrapper {
+  margin: 0 5rem;
+}
+
+.width-10 {
+  width: 10rem;
+}
+
+.width-20 {
+  width: 20rem;
+}
+
+.width-25 {
+  width: 25rem;
+}
+
+//Margin helpers
+.m-t-1 {
+  margin-block-start: var(--spacing-1);
+}
+
+.m-b-1 {
+  margin-block-end: var(--spacing-1);
+}
+
+.m-l-5 {
+  margin-inline-start: var(--spacing-5);
+}
+
+.m-r-5 {
+  margin-inline-end: var(--spacing-5);
+}
+
+// Padding helpers
+.p-l-5 {
+  padding-inline-start: var(--spacing-5);
+}
+
+.p-r-5 {
+  padding-inline-end: var(--spacing-5);
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.justify-self-end {
+  justify-self: end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-s-b {
+  justify-content: space-between;
+}
+
+.justify-content-s-a {
+  justify-content: space-around;
+}
+
+.cta-link {
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  font-weight: 700;
+
+  &.color-red {
+    color: var(--c-red);
+  }
+  &.color-white {
+    color: var(--c-white);
+  }
+
+  &.primary {
+    background-color: var(--c-white);
+  }
+
+  &.alternative {
+    border: 2px solid var(--c-white);
+    background-color: transparent;
+  }
+
+  &.black-border {
+    border: 2px solid var(--c-black);
+  }
+}
+
+.action-button {
+  background-color: var(--c-red);
+  color: var(--c-white);
+  font-weight: 700;
+  font-family: inherit;
+}

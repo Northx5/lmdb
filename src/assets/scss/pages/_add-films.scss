@@ -1,0 +1,14 @@
+@import "../form";
+
+.films-form {
+  grid-gap: 2rem;
+}
+
+.film-list {
+  border: 1px solid #333;
+  padding: 3rem;
+
+  tr td {
+    width: 25%;
+  }
+}

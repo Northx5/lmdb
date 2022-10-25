@@ -1,0 +1,19 @@
+.btn {
+  border: 1px solid #333;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 1rem;
+
+  &.primary {
+    color: #000;
+    width: 20rem;
+    height: 5rem;
+  }
+
+  &.alternative {
+    background-color: cadetblue;
+    color: #fff;
+    width: 10rem;
+    height: 4rem;
+  }
+}

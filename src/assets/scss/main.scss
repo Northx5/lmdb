@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+@import "./utilities";
+@import "./variables";
+@import "./base";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--c-white);
+  transition: color 0.5s, background-color 0.5s;
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+h1 {
+  font-size: var(--f-30);
+
+  @media screen and (min-width: $bp-large) {
+    font-size: var(--f-50);
+  }
+  @media screen and (min-width: $bp-largest) {
+    font-size: var(--f-70);
+  }
+}
+
+h2,
+h3 {
+  font-size: var(--f-20);
+  font-weight: var(--font-weight-600);
+
+  @media screen and (min-width: $bp-large) {
+    font-size: var(--f-22);
+  }
+  @media screen and (min-width: $bp-largest) {
+    font-size: var(--f-26);
+  }
+}
+ul {
+  list-style-type: none;
+}
+
+p {
+  margin-block-start: var(--spacing-1);
+}
+
+.layout {
+  grid-template-columns: [main-start] 50px [content-start] repeat(12, 1fr) [content-end] 50px [main-end];
+}
+
+.layout-12 {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.wrapper {
+  height: 100%;
+  padding: 3rem 0;
+}
+
+.content {
+  grid-column: content-start / content-end;
+}

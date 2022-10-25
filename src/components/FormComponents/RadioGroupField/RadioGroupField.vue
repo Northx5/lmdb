@@ -1,24 +1,26 @@
 <template>
-<span> {{ labelText }} </span>
-<ul class="flex radio-group">
-	<li v-for="(option, index) in options" :key="index">
-		<input 
-			type="radio" 
-			:name="name"
-			class="radio-input"
-			:id="genID(name + option.label)"
-			:checked="option.value == value"
-			:value="option.value"
-			@input="$emit('change', $event)">
-		<label :for="genID(name + option.label)" class="radio-label"> {{ option.label }}</label>
-	</li>
-</ul>
-
+<div class="form-field">
+	<span> {{ labelText }} </span>
+	<ul class="flex radio-group m-t-1">
+		<li v-for="(option, index) in options" :key="index">
+			<input 
+				type="radio" 
+				:name="name"
+				class="radio-input"
+				:id="genID(name + option.label)"
+				:checked="option.value == value"
+				:value="option.value"
+				@input="$emit('change', $event)">
+			<label :for="genID(name + option.label)" class="radio-label"> {{ option.label }}</label>
+		</li>
+	</ul>
+</div>
 </template>
 <script>
 import { generateID } from '@/mixins/generateID';
 export default {
 	mixins:[generateID],
+	emits:[ 'change'],
 	props: {
 		name:{
 			type: String,

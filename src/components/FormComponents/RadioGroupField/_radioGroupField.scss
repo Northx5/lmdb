@@ -1,6 +1,8 @@
 .radio-group {
   display: flex;
   justify-content: space-between;
+  padding-inline-start: 0;
+  max-width: 70rem;
 
   & li {
     line-height: 4rem;
@@ -10,7 +12,8 @@
     display: none;
 
     &:checked + label {
-      background-color: rgb(145, 113, 10);
+      background-color: cadetblue;
+      color: #fff;
     }
   }
 
@@ -18,8 +21,8 @@
     cursor: pointer;
     padding-inline: 2rem;
     padding-block: 1rem;
-    border-radius: 50%;
     background-color: var(--color-primary);
     color: var(--color-white);
+    border: 1px solid #000;
   }
 }

@@ -7,7 +7,8 @@ export const useFilmsStore = defineStore('films', {
 		formData: {
 			filmId: null,
 			filmName: '',
-			filmYear: '',
+			yearSeen: '',
+			genres: []
 		},
 		filmsInDb: [],
 	}),

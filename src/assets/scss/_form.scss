@@ -1,0 +1,5 @@
+.form-field {
+  & + .form-field {
+    margin-block-start: 1rem;
+  }
+}

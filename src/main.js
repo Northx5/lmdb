@@ -7,7 +7,7 @@ import router from './router';
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 
-import './assets/main.scss';
+import './assets/scss/main.scss';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDH9-suezX74q9lY5UZz8v5vd9m5nx0PTc',
